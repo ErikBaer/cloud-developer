@@ -45,12 +45,9 @@ router.patch('/:id',
 
         const { id } = req.params
         try {
-            const item = await FeedItem.findByPk(id)
+            const item = await FeedItem.findByPk(req.params.id)
             if (item) {
-                item.update(
-                    { caption: 'status-back' },
-                    { where: id }
-                )
+
                 return res.status(200).send(item)
             }
             else {
