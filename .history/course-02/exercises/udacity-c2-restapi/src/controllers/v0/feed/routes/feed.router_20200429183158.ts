@@ -22,18 +22,18 @@ router.get('/', async (req: Request, res: Response) => {
 router.get('/:id', async (req: Request, res: Response) => {
     const { id } = req.params
     try {
-        const item = await FeedItem.findByPk(req.params.id)
-        if (item) {
+        if (id) {
+            const item = await FeedItem.findByPk(req.params.id)
             console.log(item)
             return res.status(200).send(item)
         }
         else {
-            return res.status(400).send('No matching item found')
+            return res.status(400).send('No Id found in request')
         }
 
 
     } catch (err) {
-        return res.status(404).send('Connection Error')
+        return res.status(404).send('No matching item found')
     }
 })
 

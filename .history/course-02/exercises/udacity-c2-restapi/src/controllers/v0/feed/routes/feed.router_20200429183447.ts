@@ -27,13 +27,10 @@ router.get('/:id', async (req: Request, res: Response) => {
             console.log(item)
             return res.status(200).send(item)
         }
-        else {
-            return res.status(400).send('No matching item found')
-        }
 
 
     } catch (err) {
-        return res.status(404).send('Connection Error')
+        return res.status(404).send('No matching item found')
     }
 })
 

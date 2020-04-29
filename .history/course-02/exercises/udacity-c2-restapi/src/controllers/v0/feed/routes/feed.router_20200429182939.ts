@@ -20,20 +20,14 @@ router.get('/', async (req: Request, res: Response) => {
 //Add an endpoint to GET a specific resource by Primary Key
 
 router.get('/:id', async (req: Request, res: Response) => {
-    const { id } = req.params
     try {
+        console.log('params.id:', req.params.id)
         const item = await FeedItem.findByPk(req.params.id)
-        if (item) {
-            console.log(item)
-            return res.status(200).send(item)
-        }
-        else {
-            return res.status(400).send('No matching item found')
-        }
-
+        console.log(item)
+        return res.status(200).send(item)
 
     } catch (err) {
-        return res.status(404).send('Connection Error')
+        return res.status(404).send('No matching item found')
     }
 })
 
