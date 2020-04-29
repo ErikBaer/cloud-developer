@@ -21,13 +21,11 @@ router.get('/', async (req: Request, res: Response) => {
 
 router.get('/:id', async (req: Request, res: Response) => {
     try {
-        console.log('params.id:', req.params.id)
-        const item = await FeedItem.findByPk(req.params.id)
-        console.log(item)
-        return res.status(200).send(item)
+
+
 
     } catch (err) {
-        return res.status(404).send('No matching item found')
+        return res.status(404).send('No matching Profile found')
     }
 })
 
