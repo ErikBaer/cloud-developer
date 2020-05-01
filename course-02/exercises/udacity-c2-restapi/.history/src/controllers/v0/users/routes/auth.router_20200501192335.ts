@@ -24,7 +24,7 @@ async function comparePasswords(plainTextPassword: string, hash: string): Promis
 }
 
 function generateJWT(user: User): string {
-    return jwt.sign(user.email, c.dev.jwt_secret);
+    return jwt.sign(user, c.dev.jwt_secret);
 
 }
 
