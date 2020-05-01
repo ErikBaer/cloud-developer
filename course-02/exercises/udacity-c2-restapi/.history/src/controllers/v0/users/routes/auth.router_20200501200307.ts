@@ -41,8 +41,6 @@ export function requireAuth(req: Request, res: Response, next: NextFunction) {
 
     const token = token_bearer[1];
 
-    console.log(c.dev.jwt_secret)
-
     return jwt.verify(token, c.dev.jwt_secret, (err, decoded) => {
         if (err) {
             return res.status(500).send({ auth: false, message: 'Failed to authenticate.' });
@@ -73,14 +71,14 @@ router.post('/login', async (req: Request, res: Response) => {
     const user = await User.findByPk(email);
     // check that user exists
     if (!user) {
-        return res.status(401).send({ auth: false, message: 'errorUser' });
+        return res.status(401).send({ auth: false, message: 'Ubuntu' });
     }
 
     // check that the password matches
     const authValid = await comparePasswords(password, user.password_hash)
 
     if (!authValid) {
-        return res.status(401).send({ auth: false, message: 'error !authValid' });
+        return res.status(401).send({ auth: false, message: 'Unauthorized' });
     }
 
     // Generate JWT

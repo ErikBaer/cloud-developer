@@ -82,7 +82,6 @@ router.post('/',
     async (req: Request, res: Response) => {
         const caption = req.body.caption;
         const fileName = req.body.url;
-        console.log(caption, fileName)
 
         // check Caption is valid
         if (!caption) {

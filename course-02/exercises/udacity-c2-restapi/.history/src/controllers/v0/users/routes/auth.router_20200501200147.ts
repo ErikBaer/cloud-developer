@@ -73,14 +73,14 @@ router.post('/login', async (req: Request, res: Response) => {
     const user = await User.findByPk(email);
     // check that user exists
     if (!user) {
-        return res.status(401).send({ auth: false, message: 'errorUser' });
+        return res.status(401).send({ auth: false, message: 'Ubuntu' });
     }
 
     // check that the password matches
     const authValid = await comparePasswords(password, user.password_hash)
 
     if (!authValid) {
-        return res.status(401).send({ auth: false, message: 'error !authValid' });
+        return res.status(401).send({ auth: false, message: 'Unauthorized' });
     }
 
     // Generate JWT
